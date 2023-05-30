@@ -1,0 +1,16 @@
+###################### E-Commerce ###########################
+#                                                           #
+#                                                           #
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+-s'identifier (inscription/connexion/deconnexion) -> une table
+-gestion du panier -> pas de table session
+-gestion des commandes -> 2 tables 
+-historique des commandes-> pas de table en plus
+-avis -> 1 table
+-categorie -> 1 table
+-mise en avant d'un produit -> 1 table 
+-------------------------------------------------------------
+
+-mailing(vérifier le compte /  )
+-stripe less go
+-vente flash

@@ -1,0 +1,217 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 29 mai 2023 à 22:35
+-- Version du serveur : 10.4.24-MariaDB
+-- Version de PHP : 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Base de données : `mvc`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `buy`
+--
+
+CREATE TABLE `buy` (
+  `id_buy` int(11) NOT NULL,
+  `id_purchase` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+CREATE TABLE `category` (
+  `id_category` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `focus`
+--
+
+CREATE TABLE `focus` (
+  `id_focus` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `sale` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `product`
+--
+
+CREATE TABLE `product` (
+  `id_product` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `price` float NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `product`
+--
+
+INSERT INTO `product` (`id_product`, `name`, `category`, `image`, `price`, `description`) VALUES
+(7, 'Nike', '0', '260520231427137DS.jpg', 10, 'short incroyable'),
+(8, 'WeeB City', '0', '260520231407267DS.jpg', 200, 'zdfqsdf');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `purchase`
+--
+
+CREATE TABLE `purchase` (
+  `id_purchase` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `purchase_date` datetime NOT NULL,
+  `total` float NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `review`
+--
+
+CREATE TABLE `review` (
+  `id_review` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `f_name` varchar(255) NOT NULL,
+  `l_name` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `delivery_address` varchar(255) DEFAULT NULL,
+  `billing_address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `verify_account` tinyint(1) NOT NULL,
+  `token` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `buy`
+--
+ALTER TABLE `buy`
+  ADD PRIMARY KEY (`id_buy`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Index pour la table `focus`
+--
+ALTER TABLE `focus`
+  ADD PRIMARY KEY (`id_focus`);
+
+--
+-- Index pour la table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id_product`);
+
+--
+-- Index pour la table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`id_purchase`);
+
+--
+-- Index pour la table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id_review`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `buy`
+--
+ALTER TABLE `buy`
+  MODIFY `id_buy` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `focus`
+--
+ALTER TABLE `focus`
+  MODIFY `id_focus` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `purchase`
+--
+ALTER TABLE `purchase`
+  MODIFY `id_purchase` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;

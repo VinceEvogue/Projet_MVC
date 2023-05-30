@@ -1,0 +1,10 @@
+Les 3 étapes minimum pour afficher une page de vue:
+
+1ere étape :  Créer notre fichier de vue dans le dossier Views
+                et inclure le header et le footer dedans (et au milieu un titre)
+
+2ème étape : Créer une méthode (static) dans un controlleur qui va inclure mon fichier de vue que je viens de Créer
+
+3ème étape : modifier mon tableau de route dans params. Il faut ajouter une nouvelle route qui a pour valeur le controlleur utilisé et la méthode utilisée.
+
+taper dans l'url le nouveau chemin pour afficher ma nouvelle vue.
